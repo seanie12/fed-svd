@@ -1,0 +1,11 @@
+Pillow
+tqdm
+requests
+numpy
+rich
+pandas
+torch
+peft
+datasets
+wandb
+opacus
