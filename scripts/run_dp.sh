@@ -26,7 +26,7 @@ scheduler_type="constant"
 recalculate_svd_period=1
 
 # Misc
-report_period=10
+report_period=20
 
 # python -m dataset.generator --dataset $task --n-clients $n_clients --alpha $alpha --seed $seed # You can comment this out if you already have the dataset
 trial="K=${n_clients}_dp_${model}-svd_${task}_${learning_rate}_${eps}_C_${max_grad_norm}"
@@ -49,7 +49,6 @@ do
 					--seed $seed\
 					--lora-rank $lora_rank\
 					--batch_size $batch_size\
-					--base-path "/nfs/scratch/staff/leese/fedmm"\
 					--backbone $backbone\
 					--scheduler-type $scheduler_type\
 					--accumulation-steps $accumulation_steps\
@@ -57,8 +56,8 @@ do
 					--recalculate-svd-period $recalculate_svd_period\
 					--dropout 0.05 \
 					--n-iter $n_iter\
-					--recalculate-svd-period $recalculate_svd_period\
 					--dp\
+					--delta 1e-5\
 					--eps $eps\
 					--max-grad-norm $max_grad_norm
 done

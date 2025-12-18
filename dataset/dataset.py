@@ -83,7 +83,7 @@ class GlueDataLoader(object):
 
         return dataset
 
-    def get_dp_dataloder(self, dataset, batch_size):
+    def get_dp_dataloader(self, dataset, batch_size):
         dataloader = DataLoader(
             dataset, batch_size,
             pin_memory=True,

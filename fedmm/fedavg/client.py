@@ -241,7 +241,7 @@ class Client(ClientModule):
 
         batch_size = self.args.batch_size * self.args.accumulation_steps
 
-        dataloader = self.loader.get_dp_dataloder(self.tensor_dataset,
+        dataloader = self.loader.get_dp_dataloader(self.tensor_dataset,
                                                   batch_size)
 
         privacy_engine = PrivacyEngine()
@@ -322,7 +322,7 @@ class Client(ClientModule):
                     break
 
             # Evaluate at last epoch, in every 2 rounds
-            if (self.curr_rnd + 1) % self.args.report_period == 0:
+            if (self.curr_rnd + 1) % self.args.report_period == 0 or self.curr_rnd == self.args.n_rnds - 1:
                 eps = privacy_engine.get_epsilon(self.args.delta)
                 avg_epoch_loss = epoch_loss / num_batches
                 result_dict = self.evaluate()
