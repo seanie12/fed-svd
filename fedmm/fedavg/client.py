@@ -45,7 +45,7 @@ class Client(ClientModule):
             'rnd_lss': [], 'rnd_acc': [],
         }
         self.wandb_run = wandb.init(
-            project="fedmm",
+            project="fedsvd",
             name=f"{self.args.trial}_client_{self.client_id}",
             group=self.args.trial,
             config=vars(self.args),
@@ -81,7 +81,7 @@ class Client(ClientModule):
         if self.args.resume_from_round is not None:
             set_seed(self.args.seed)
             self.wandb_run = wandb.init(
-                project="fedmm",
+                project="fedsvd",
                 name=f"{self.args.trial}_client_{self.client_id}",
                 group=self.args.trial,
                 config=vars(self.args),
@@ -92,6 +92,7 @@ class Client(ClientModule):
         self.log = loaded_state['log']
         if self.args.dp:
             self.noise_multiplier = loaded_state['noise_multiplier']
+            self.tensor_dataset = loaded_state['tensor_dataset']
 
     def on_receive_message(self, curr_rnd):
         self.curr_rnd = curr_rnd
