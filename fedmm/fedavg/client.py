@@ -58,11 +58,11 @@ class Client(ClientModule):
         self.tensor_dataset = self.loader.get_tensor_dataset()
         num_batches = math.ceil(len(self.tensor_dataset) / batch_size)
         assert self.args.frac > 0
-        sample_rate = (1 / num_batches) * self.args.frac
+        sample_rate = (1 / num_batches) 
 
         self.noise_multiplier = get_noise_multiplier(
             sample_rate=sample_rate,
-            steps=self.args.n_iter * self.args.n_rnds,
+            steps=self.args.n_iter * self.args.n_rnds * self.args.frac,
             target_delta=self.args.delta,
             target_epsilon=self.args.eps,
             accountant="prv"
