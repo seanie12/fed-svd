@@ -26,6 +26,12 @@ pip install -r requirements.txt
 
 Download the dataset from [here](https://drive.google.com/file/d/1Q74mdu0ABsOD0VCkDQgx7p1fP8rkW2WS/view). Unzip it and place the `data` folder in the project root directory (same level as `main.py`).
 
+```bash
+pip install gdown
+gdown --id 1Q74mdu0ABsOD0VCkDQgx7p1fP8rkW2WS
+unzip data.zip
+```
+
 Supported tasks: `sst2`, `mnli`, `qqp`, `qnli`
 
 ### Differential Privacy Training
